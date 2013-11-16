@@ -52,6 +52,8 @@ namespace RoboBeast.Win8
             var notification = new Windows.UI.Notifications.TileNotification(tileDOM);
             var upd = Windows.UI.Notifications.TileUpdateManager.CreateTileUpdaterForApplication();
             upd.Update(notification);
+
+            Windows.System.Launcher.LaunchFileAsync("launcher.testexe");
         }
 
         
