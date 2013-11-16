@@ -1,2 +1,3 @@
-/RoboBeast.Common/bin
+bin
 obj
+*.suo
