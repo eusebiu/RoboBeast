@@ -14,6 +14,12 @@ namespace RoboBeast.Common
         [DataMember]
         public int Forward { get; set; }
 
+        [DataMember]
         public int Backward { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("Forward:{0}, Backward:{1}",Forward,Backward);
+        }
     }
 }

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
+  <Identity Name="ea34f05a-abdd-4edb-834c-da3c12a40ce5" Publisher="CN=Eusebiu" Version="1.0.0.0" />
+  <Properties>
+    <DisplayName>RoboBeast.Win8</DisplayName>
+    <PublisherDisplayName>Eusebiu</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.3.0</OSMinVersion>
+    <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="RoboBeast.Win8.App">
+      <m2:VisualElements DisplayName="RoboBeast.Win8" Square150x150Logo="Assets\Square150x150Logo.jpg" Square30x30Logo="Assets\SmallLogo.png" Description="RoboBeast.Win8" ForegroundText="light" BackgroundColor="#464646">
+        <m2:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.jpg" DefaultSize="wide310x150Logo" Square70x70Logo="Assets\Square70x70Logo.jpg" Square310x310Logo="Assets\Square310x310Logo.jpg">
+        </m2:DefaultTile>
+        <m2:SplashScreen Image="Assets\SplashScreen.png" />
+      </m2:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>

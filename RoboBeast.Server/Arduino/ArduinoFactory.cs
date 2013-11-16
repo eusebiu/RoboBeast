@@ -10,42 +10,31 @@ namespace RoboBeast.Server.Arduino
 {
     static class ArduinoFactory
     {
+        static ArduinoUno arduino;
+
         public static ArduinoUno CreateArduino(string port)
         {
-            ArduinoUno arduino = new ArduinoUno(port);
-            {
-                while (!arduino.IsInitialized) ;
-
-                arduino.SetPinMode(ArduinoUnoPins.A5, PinModes.Analog);
-                arduino.SetPinMode(ArduinoUnoPins.A1, PinModes.Output);
-
-                arduino.SetDO(ArduinoUnoPins.A1, false);
-
-                arduino.SetPinMode(ArduinoUnoPins.D3_PWM, PinModes.PWM);
-                arduino.SetPinMode(ArduinoUnoPins.D5_PWM, PinModes.PWM);
-
-                arduino.SetPinMode(ArduinoUnoPins.D6_PWM, PinModes.PWM);
-                arduino.SetPinMode(ArduinoUnoPins.D9_PWM, PinModes.PWM);
-
+            if (arduino != null)
                 return arduino;
 
-                //while (true)
-                //{
-                //    var distance = arduino.ReadAnalog(ArduinoUnoAnalogPins.A5);
-                //    Console.WriteLine(distance);
+            arduino = new ArduinoUno(port);
 
-                //    distance = Math.Max(distance, 200);
+            while (!arduino.IsInitialized) ;
 
-                //    arduino.SetPWM(ArduinoUnoPWMPins.D3_PWM, 200);
+            Console.WriteLine("Arduino initialized...");
 
-                //    if (distance != -1)
-                //        Thread.Sleep((int)distance);
+            arduino.SetPinMode(ArduinoUnoPins.A5, PinModes.Analog);
+            arduino.SetPinMode(ArduinoUnoPins.A1, PinModes.Output);
 
-                //    arduino.SetPWM(ArduinoUnoPWMPins.D3_PWM, -200);
-                //    if (distance != -1)
-                //        Thread.Sleep((int)distance);
-                //}
-            }
-        }
+            arduino.SetDO(ArduinoUnoPins.A1, false);
+
+            arduino.SetPinMode(ArduinoUnoPins.D3_PWM, PinModes.PWM);
+            arduino.SetPinMode(ArduinoUnoPins.D5_PWM, PinModes.PWM);
+
+            arduino.SetPinMode(ArduinoUnoPins.D9_PWM, PinModes.PWM);
+            arduino.SetPinMode(ArduinoUnoPins.D6_PWM, PinModes.PWM);
+
+            return arduino;
+        }        
     }
 }

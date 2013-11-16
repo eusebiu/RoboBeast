@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoboBeast.Server", "RoboBea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoboBeast.Common", "RoboBeast.Common\RoboBeast.Common.csproj", "{978A2954-BF89-4109-970D-E39EBE268F6E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoboBeast.Kinect", "RoboBeast.Kinect\RoboBeast.Kinect.csproj", "{E4FF7F91-E6BE-45FE-B23E-BCFD549B43E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{978A2954-BF89-4109-970D-E39EBE268F6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{978A2954-BF89-4109-970D-E39EBE268F6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{978A2954-BF89-4109-970D-E39EBE268F6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4FF7F91-E6BE-45FE-B23E-BCFD549B43E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4FF7F91-E6BE-45FE-B23E-BCFD549B43E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4FF7F91-E6BE-45FE-B23E-BCFD549B43E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4FF7F91-E6BE-45FE-B23E-BCFD549B43E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

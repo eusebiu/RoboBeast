@@ -18,5 +18,10 @@ namespace RoboBeast.Common
 
         [DataMember]
         public bool Led { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("LM:{0} , RM:{1},LED:{2}", LeftMotor,RightMotor,Led);
+        }
     }
 }

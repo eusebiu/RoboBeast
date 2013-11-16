@@ -1,15 +1,9 @@
 ﻿using RoboBeast.Common;
-using RoboBeast.Server.Interface;
+using RoboBeast.Common.Interface;
 using Sharpduino;
 using Sharpduino.Constants;
-using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.ServiceModel;
-using System.ServiceModel.Syndication;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -19,7 +13,7 @@ namespace RoboBeast.Server
     {
         CancellationToken ct = new CancellationToken();
 
-        static string Port = ConfigurationSettings.AppSettings["Port"];
+        static string Port = ConfigurationManager.AppSettings["Port"];
 
         ArduinoUno arduino = Arduino.ArduinoFactory.CreateArduino(Port);
 
@@ -27,7 +21,7 @@ namespace RoboBeast.Server
 
         public RoboService()
         {
-            Task.Factory.StartNew(() => Process());
+            //Task.Factory.StartNew(() => Process());
         }
 
         private void Process()
@@ -45,32 +39,44 @@ namespace RoboBeast.Server
                         arduino.SetPWM(ArduinoUnoPWMPins.D5_PWM, data.LeftMotor.Backward);
 
                         arduino.SetPWM(ArduinoUnoPWMPins.D6_PWM, data.RightMotor.Forward);
-                        arduino.SetPWM(ArduinoUnoPWMPins.D9_PWM, data.LeftMotor.Backward);
+                        arduino.SetPWM(ArduinoUnoPWMPins.D9_PWM, data.RightMotor.Backward);
                     }
                 }
 
                 var distance = arduino.ReadAnalog(ArduinoUnoAnalogPins.A5);
 
-                if (distance < 100)
-                {
-                    arduino.SetPWM(ArduinoUnoPWMPins.D3_PWM, 0);
-                    arduino.SetPWM(ArduinoUnoPWMPins.D5_PWM, 0);
+                //if (distance < 100)
+                //{
+                //    arduino.SetPWM(ArduinoUnoPWMPins.D3_PWM, 0);
+                //    arduino.SetPWM(ArduinoUnoPWMPins.D5_PWM, 0);
 
-                    arduino.SetPWM(ArduinoUnoPWMPins.D6_PWM, 0);
-                    arduino.SetPWM(ArduinoUnoPWMPins.D9_PWM, 0);
-                }
+                //    arduino.SetPWM(ArduinoUnoPWMPins.D6_PWM, 0);
+                //    arduino.SetPWM(ArduinoUnoPWMPins.D9_PWM, 0);
+                //}
             }
         }
 
-        public void SendData(int leftForward, int leftBackWard, int rightForward, int rightBackward, bool light)
+        public void SendData(Data data)
         {
-            var data = new Data {
-                Led = light,
-                LeftMotor = new Motor { Forward = leftForward, Backward = leftBackWard },
-                RightMotor = new Motor { Forward = rightForward, Backward = rightBackward } 
-            };
+            System.Console.WriteLine(data);
+            //queue.Enqueue(data);
+            arduino.SetDO(ArduinoUnoPins.A1, data.Led);
 
-            queue.Enqueue(data);
+            arduino.SetPWM(ArduinoUnoPWMPins.D3_PWM, data.LeftMotor.Forward);
+            arduino.SetPWM(ArduinoUnoPWMPins.D5_PWM, data.LeftMotor.Backward);
+
+            arduino.SetPWM(ArduinoUnoPWMPins.D6_PWM, data.RightMotor.Forward);
+            arduino.SetPWM(ArduinoUnoPWMPins.D9_PWM, data.RightMotor.Backward);
+        }
+
+        public bool IsArduinoConnected()
+        {
+            return arduino.IsInitialized;
+        }
+
+        public bool IsKinectConnected()
+        {
+            return true;
         }
     }
 }

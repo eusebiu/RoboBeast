@@ -1,14 +1,6 @@
-﻿using Sharpduino;
-using Sharpduino.Constants;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Configuration;
-using System.Linq;
 using System.ServiceModel;
-using System.ServiceModel.Description;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace RoboBeast.Server
 {
@@ -16,6 +8,8 @@ namespace RoboBeast.Server
     {
         static void Main(string[] args)
         {
+            Arduino.ArduinoFactory.CreateArduino(ConfigurationManager.AppSettings["Port"]);
+
             using (ServiceHost host = new ServiceHost(typeof(RoboService)))
             {
                 host.Open();
