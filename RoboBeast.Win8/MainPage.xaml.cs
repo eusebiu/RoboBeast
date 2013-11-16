@@ -53,7 +53,7 @@ namespace RoboBeast.Win8
             var upd = Windows.UI.Notifications.TileUpdateManager.CreateTileUpdaterForApplication();
             upd.Update(notification);
 
-            Windows.System.Launcher.LaunchFileAsync("launcher.testexe");
+            
         }
 
         
