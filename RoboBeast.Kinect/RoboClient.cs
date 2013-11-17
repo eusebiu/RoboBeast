@@ -31,7 +31,8 @@ namespace RoboBeast.Kinect
                 return;
 
             _prevTime = DateTime.Now;
-
+            //KinectAudioSource.MaxBeamAngle.ToString();
+            
             Joint handRight = skeleton.Joints[JointType.HandRight];
             Joint handLeft = skeleton.Joints[JointType.HandLeft];
             Joint shoulderRight = skeleton.Joints[JointType.ShoulderRight];
@@ -46,8 +47,8 @@ namespace RoboBeast.Kinect
 
             float manaR=0, manaL=0;
             float fi=0.09f;
-            int ct = 200;//constanta motoare inainte
-            int ct2 = -200;//constatnta motoare inapoi
+            int ct = 170;//constanta motoare inainte
+            int ct2 = -150;//constatnta motoare inapoi
 
             manaR=handRight.Position.Y-shoulderRight.Position.Y;
             manaL = -(handLeft.Position.Y - shoulderLeft.Position.Y);                
@@ -59,15 +60,15 @@ namespace RoboBeast.Kinect
             else 
                 if (Math.Abs(manaR) < fi && Math.Abs(manaL)>=fi)
                 {
-                    if (manaL > 0) { motorLB = motorRB = motorRF = 0; motorLF = (int)(manaL * ct); }
-                    else { motorLF = motorRB = motorRF = 0; motorLB = (int)(manaL * ct2); }
+                    if (manaL > 0) { motorLB = motorRB = motorRF = 0; motorLF = (int)(manaL * ct); led = true; }
+                    else { motorLF = motorRB = motorRF = 0; motorLB = (int)(manaL * ct2); led = true; }
                 }
                 else
                 {
                     if(Math.Abs(manaL)<fi && Math.Abs(manaR)>=fi)
                     {
-                        if (manaR > 0) { motorLB = motorRB = motorLF = 0; motorRF = (int)(manaR * ct); }
-                        else { motorLF = motorLB = motorRF = 0; motorRB = (int)(manaR * ct2); }
+                        if (manaR > 0) { motorLB = motorRB = motorLF = 0; motorRF = (int)(manaR * ct); led = true; }
+                        else { motorLF = motorLB = motorRF = 0; motorRB = (int)(manaR * ct2); led = true; }
                     }
                     else
                     {
@@ -76,6 +77,7 @@ namespace RoboBeast.Kinect
                             motorRF = motorLF = 0;
                             motorLB = (int)(manaL * ct2);
                             motorRB = (int)(manaR * ct2);
+                            led = true;
                         }
                         else
                         {
@@ -84,6 +86,7 @@ namespace RoboBeast.Kinect
                                 motorRF = (int)(manaR * ct);
                                 motorLB = (int)(manaL * ct2);
                                 motorLF = motorRB = 0;
+                                led = true;
                             }
                             else
                             {
@@ -92,12 +95,14 @@ namespace RoboBeast.Kinect
                                     motorLF=(int)(manaL*ct);
                                     motorLB = motorRF = 0;
                                     motorRB = (int)(manaR * ct2);
+                                    led = true;
                                 }
                                 else
                                 {
                                     motorRB = motorLB = 0;
                                     motorLF = (int)(manaL * ct);
-                                    motorRF = (int)(manaR * ct); ;
+                                    motorRF = (int)(manaR * ct);
+                                    led = true;
                                 }
                             }
                         }
