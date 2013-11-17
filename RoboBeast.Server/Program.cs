@@ -8,8 +8,6 @@ namespace RoboBeast.Server
     {
         static void Main(string[] args)
         {
-            Arduino.ArduinoFactory.CreateArduino(ConfigurationManager.AppSettings["Port"]);
-
             using (ServiceHost host = new ServiceHost(typeof(RoboService)))
             {
                 host.Open();

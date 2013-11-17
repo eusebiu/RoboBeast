@@ -10,14 +10,9 @@ namespace RoboBeast.Server.Arduino
 {
     static class ArduinoFactory
     {
-        static ArduinoUno arduino;
-
         public static ArduinoUno CreateArduino(string port)
         {
-            if (arduino != null)
-                return arduino;
-
-            arduino = new ArduinoUno(port);
+            var arduino = new ArduinoUno(port);
 
             while (!arduino.IsInitialized) ;
 

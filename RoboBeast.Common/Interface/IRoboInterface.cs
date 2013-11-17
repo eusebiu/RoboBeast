@@ -6,13 +6,16 @@ namespace RoboBeast.Common.Interface
     [ServiceContract]
     public interface IRoboInterface
     {
+        [OperationContract]
+        bool Register(string clientName);
+
         [OperationContract (IsOneWay=true)]
-        void SendData(Data data);
+        void SendData(string clientName, Data data);
 
         [OperationContract]
-        bool IsArduinoConnected();
+        bool IsArduinoConnected(string clientName);
 
         [OperationContract]
-        bool IsKinectConnected();
+        bool IsKinectConnected(string clientName);
     }
 }

@@ -12,16 +12,18 @@ namespace RoboBeast.Kinect
     {
         static System.DateTime _prevTime = DateTime.Now;
         static IRoboInterface channel;
+        const string CLIENTNAME = "Kinect";
 
         static RoboClient()
         {
-            NetTcpBinding binding = new NetTcpBinding();
+            BasicHttpBinding binding = new BasicHttpBinding();
             EndpointAddress address = new EndpointAddress(ConfigurationManager.AppSettings["ServerAddress"]);
 
             var factory =
                 new ChannelFactory<IRoboInterface>(binding, address);
 
             channel = factory.CreateChannel();
+            channel.Register(CLIENTNAME);
         }
 
         public static void SendData(Skeleton skeleton)
@@ -113,46 +115,8 @@ namespace RoboBeast.Kinect
             //Debug.WriteLine(string.Format("Right hand: {0},{1},{2}", handRight.Position.X, handRight.Position.Y, handRight.Position.Z));
             Debug.WriteLine("manaR:" + manaR.ToString() + " - " + "manaL:" + manaL.ToString());
             //Debug.WriteLine("manaL:" + manaL.ToString());
-            //if (handRight.Position.Y > shoulderRight.Position.Y)
-            //{
 
-            //    motorRF = 20 * (int)(manaR*10);
-            //    motorLF = 0;
-            //}
-
-            //if (handLeft.Position.Y > shoulderLeft.Position.Y)
-            //{
-            //    motorLF = 20 * (int)(manaL * 10);
-            //    motorRF = 0;
-            //}
-            //if ((handRight.Position.Y > shoulderRight.Position.Y) && (handLeft.Position.Y > shoulderLeft.Position.Y))
-            //{
-            //    motorLF = 20 * (int)(manaL * 10);
-            //    motorRF = 20 * (int)(manaR * 10);
-            //    led = true;
-            //}
-            //if ((handLeft.Position.Y < hipLeft.Position.Y) && (handRight.Position.Y < hipRight.Position.Y))
-            //{
-            //    motorLB = -40 ;
-            //    motorRB = -40 ;
-            //    led = true;
-            //}
-            //if (handRight.Position.Y < hipRight.Position.Y)
-            //{
-            //    motorRB = -40 ;
-            //    motorRF = 0;
-            //}
-            //if (handLeft.Position.Y < hipLeft.Position.Y)
-            //{
-            //    motorLB = -40 ;
-            //    motorRB = 0;
-            //}
-            //if (handRight.Position.Y == head.Position.Y)
-            //{
-            //    led = true;
-            //}
-
-            channel.SendData(new Data
+            channel.SendData(CLIENTNAME, new Data
             {
                 Led = led,
                 LeftMotor = new Motor { Forward = motorLF, Backward = motorLB },
