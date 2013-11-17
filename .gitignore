@@ -1,3 +1,4 @@
 bin
 obj
 *.suo
+/RoboBeast.WP8/Bin

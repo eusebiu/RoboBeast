@@ -1,0 +1,46 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="RoboBeast.WP8.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Landscape" Orientation="Landscape"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="HeaderText" Text="Robo Beast with Accelerometers" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
+        <TextBlock x:Name="AccelerometerValue" />
+            <Button x:Name="startbtn" Click="startbtn_Click_1" Content="START"/>
+            <Button x:Name="stopbtn" Click="stopbtn_Click_1" Content="STOP"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Line x:Name="xLine" X1="240" Y1="350" X2="340" Y2="350" Stroke="Red" StrokeThickness="4" />
+        <Line x:Name="yLine" X1="240" Y1="350" X2="240" Y2="270" Stroke="Green" StrokeThickness="4" />
+        <Line x:Name="zLine" X1="240" Y1="350" X2="190" Y2="400" Stroke="Blue" StrokeThickness="4" />
+        <Canvas HorizontalAlignment="Left" Height="100" Margin="278,690,0,-382" Grid.Row="1" VerticalAlignment="Top" Width="100"/>
+
+        <!--Uncomment to see an alignment grid to help ensure your controls are
+            aligned on common boundaries.  The image has a top margin of -32px to
+            account for the System Tray. Set this to 0 (or remove the margin altogether)
+            if the System Tray is hidden.
+
+            Before shipping remove this XAML and the image itself.-->
+        <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,-32,0,0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" />-->
+    </Grid>
+
+</phone:PhoneApplicationPage>
