@@ -49,8 +49,8 @@ namespace RoboBeast.Kinect
 
             float manaR=0, manaL=0;
             float fi=0.09f;
-            int ct = 170;//constanta motoare inainte
-            int ct2 = -150;//constatnta motoare inapoi
+            int ct = 200;//constanta motoare inainte
+            int ct2 = -170;//constatnta motoare inapoi
 
             manaR=handRight.Position.Y-shoulderRight.Position.Y;
             manaL = -(handLeft.Position.Y - shoulderLeft.Position.Y);                
