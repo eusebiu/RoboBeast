@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b2cdbd9c-d281-4b27-aad0-883d4eecc6a4" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://10.199.100.37:8080/RoboService" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="RoboService.wsdl" MetadataType="Wsdl" ID="a5a82787-1c11-4a93-9b2b-2a3bbf805b25" SourceId="1" SourceUrl="http://10.199.100.37:8080/RoboService?wsdl" />
+    <MetadataFile FileName="RoboService.xsd" MetadataType="Schema" ID="d4f4a04e-c694-4721-b6a2-b5af5d0598ba" SourceId="1" SourceUrl="http://10.199.100.37:8080/RoboService?xsd=xsd1" />
+    <MetadataFile FileName="RoboService.disco" MetadataType="Disco" ID="fcfd3803-6c60-4f98-8430-5fc0280e771f" SourceId="1" SourceUrl="http://10.199.100.37:8080/RoboService?disco" />
+    <MetadataFile FileName="RoboService1.xsd" MetadataType="Schema" ID="aa53f88d-3742-4454-9a69-fe6ba5968cb3" SourceId="1" SourceUrl="http://10.199.100.37:8080/RoboService?xsd=xsd2" />
+    <MetadataFile FileName="RoboService2.xsd" MetadataType="Schema" ID="8953a6e9-f7ef-4ef1-8945-5bc3fbfa9705" SourceId="1" SourceUrl="http://10.199.100.37:8080/RoboService?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
